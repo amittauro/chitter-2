@@ -5,6 +5,7 @@
     <title></title>
   </head>
   <body>
+    <%= flash[:notice] %>
     <form action="/users" method="post">
       <input type="text" name="email" value="">
       <input type="text" name="password" value="">

@@ -1,4 +1,4 @@
-def sign_in
+def sign_up
   visit '/users/new'
   fill_in 'email', with: 'user@example.com'
   fill_in 'password', with: 'password'

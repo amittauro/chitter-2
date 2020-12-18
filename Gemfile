@@ -25,3 +25,5 @@ gem "rubocop", "~> 1.6", require: false
 gem 'simplecov', require: false, group: :test
 
 gem "simplecov-console", "~> 0.8.0"
+
+gem "sinatra-flash", "~> 0.3.0"
