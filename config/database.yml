@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  database: chitter_app
+  pool: 5
+
+test:
+  adapter: postgresql
+  database: chitter_app_test
+  pool: 5
