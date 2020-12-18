@@ -4,6 +4,7 @@ require './app'
 require 'database_cleaner/active_record'
 require 'simplecov'
 require 'simplecov-console'
+require 'helper'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,

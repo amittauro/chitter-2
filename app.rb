@@ -13,6 +13,14 @@ class Chitter < Sinatra::Base
   end
 
   get '/sessions/new' do
-    'You have successfully signed up!'
+    erb :log_in
+  end
+
+  post '/sessions' do
+    redirect '/peeps/new'
+  end
+
+  get '/peeps/new' do
+    'You have succesfully logged in!'
   end
 end
