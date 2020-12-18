@@ -6,6 +6,8 @@
   </head>
   <body>
     <h1>Peeps</h1>
-
+    <% @messages.each do |message| %>
+    <%= message %>
+    <% end %>
   </body>
 </html>

@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/flash'
+require 'date'
 
 class Chitter < Sinatra::Base
   register Sinatra::ActiveRecordExtension
@@ -32,7 +33,7 @@ class Chitter < Sinatra::Base
   post '/sessions' do
     user = User.find_by_email(params[:email])
     if user.password == params[:password]
-      session[:user] = params['email']
+      session[:user] = user.id
       flash[:notice] = 'You have succesfully logged in!'
       redirect '/peeps/new'
     else
@@ -46,10 +47,13 @@ class Chitter < Sinatra::Base
   end
 
   post '/peeps' do
+    Peep.create(user_id: session[:user], message: params['peep'], time: DateTime.now)
+
     redirect '/peeps'
   end
 
   get '/peeps' do
+    @messages = Peep.all.map { |peep| peep.message }
     erb :peeps
   end
 end

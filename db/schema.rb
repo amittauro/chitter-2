@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_12_18_150923) do
 
   create_table "peeps", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "peep"
+    t.string "message"
     t.datetime "time"
     t.index ["user_id"], name: "index_peeps_on_user_id"
   end
