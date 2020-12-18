@@ -17,8 +17,6 @@ describe 'authentication', type: :feature do
     expect(page).to have_content('User already exists please try a different username and email')
   end
 
-
-
   scenario 'a user can log in with valid details' do
     sign_up
     visit '/sessions/new'
@@ -29,4 +27,13 @@ describe 'authentication', type: :feature do
     expect(page).to have_content('You have succesfully logged in!')
   end
 
+  scenario 'a user cant login with invalid password' do
+    sign_up
+    visit '/sessions/new'
+    fill_in 'email', with: 'user@example.com'
+    fill_in 'password', with: 'passward'
+    click_button 'submit'
+    expect(current_path).to eq('/sessions/new')
+    expect(page).to have_content('Invalid password please try again')
+  end
 end
