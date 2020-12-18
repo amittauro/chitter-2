@@ -53,7 +53,7 @@ class Chitter < Sinatra::Base
   end
 
   get '/peeps' do
-    @peeps = Peep.all.reverse
+    @peeps = Peep.reverse_order
     erb :peeps
   end
 end
