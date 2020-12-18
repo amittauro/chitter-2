@@ -6,8 +6,9 @@
   </head>
   <body>
     <h1>Peeps</h1>
-    <% @messages.each do |message| %>
-    <%= message %>
+    <% @peeps.each do |peep| %>
+    <h1><%= peep.message %></h1>
+    <h1><%= peep.format_time %></h1>
     <% end %>
   </body>
 </html>

@@ -22,8 +22,8 @@ describe 'peeps', type: :feature do
       username: 'artauro',
       password: 'password'
     )
-    Peep.create(user_id: user.id, message: 'hello', time: 'time')
+    Peep.create(user_id: user.id, message: 'hello', time: DateTime.new(2001,2,3,4,5,6))
     visit '/peeps'
-    expect(page).to have_content('time')
+    expect(page).to have_content('February 3rd, 2001 04:05')
   end
 end

@@ -53,7 +53,7 @@ class Chitter < Sinatra::Base
   end
 
   get '/peeps' do
-    @messages = Peep.all.map { |peep| peep.message }
+    @peeps = Peep.all.reverse
     erb :peeps
   end
 end
