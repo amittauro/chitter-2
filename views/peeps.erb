@@ -5,10 +5,14 @@
     <title></title>
   </head>
   <body>
+    <form class="" action="/session" method="post">
+      <input id="hidden" type="hidden" name="_method" value="delete">
+      <input type="submit" name="" value="log out">
+    </form>
+    <a href="/peeps/new">Post peep</a>
     <h1>Peeps</h1>
     <% @peeps.each do |peep| %>
-    <h1><%= peep.message %></h1>
-    <h1><%= peep.format_time %></h1>
+    <p><%= peep.message %> on <%= peep.format_time %></p>
     <% end %>
   </body>
 </html>

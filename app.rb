@@ -2,11 +2,18 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/flash'
 require 'date'
+require './models/user'
+require './models/peep'
 
 class Chitter < Sinatra::Base
   register Sinatra::ActiveRecordExtension
   register Sinatra::Flash
   enable :sessions
+  enable :method_override
+
+  get '/' do
+    erb :index
+  end
 
   get '/users/new' do
     erb :sign_up
@@ -22,15 +29,15 @@ class Chitter < Sinatra::Base
         username: params['username'], password: params['password']
       )
       flash[:notice] = 'You have successfully signed up!'
-      redirect '/sessions/new'
+      redirect '/session/new'
     end
   end
 
-  get '/sessions/new' do
+  get '/session/new' do
     erb :log_in
   end
 
-  post '/sessions' do
+  post '/session' do
     user = User.find_by_email(params[:email])
     if user.password == params[:password]
       session[:user] = user.id
@@ -38,8 +45,15 @@ class Chitter < Sinatra::Base
       redirect '/peeps/new'
     else
       flash[:notice] = 'Invalid password please try again'
-      redirect '/sessions/new'
+      redirect '/session/new'
     end
+  end
+
+  delete '/session' do
+    user_id = session.delete(:user)
+    user = User.find_by(id: user_id)
+    flash[:notice] = "#{user.username} you have succesfully signed out"
+    redirect '/'
   end
 
   get '/peeps/new' do

@@ -6,7 +6,7 @@ describe 'authentication', type: :feature do
     fill_in 'name', with: 'Amit Tauro'
     fill_in 'username', with: 'artauro'
     click_button 'submit'
-    expect(current_path).to eq('/sessions/new')
+    expect(current_path).to eq('/session/new')
     expect(page).to have_content('You have successfully signed up!')
   end
 
@@ -31,7 +31,15 @@ describe 'authentication', type: :feature do
     fill_in 'email', with: 'user@example.com'
     fill_in 'password', with: 'passward'
     click_button 'submit'
-    expect(current_path).to eq('/sessions/new')
+    expect(current_path).to eq('/session/new')
     expect(page).to have_content('Invalid password please try again')
+  end
+
+  scenario 'a user can log out' do
+    sign_up_and_log_in
+    visit '/peeps'
+    click_button 'log out'
+    expect(current_path).to eq('/')
+    expect(page).to have_content('artauro you have succesfully signed out')
   end
 end
