@@ -19,7 +19,6 @@ describe 'authentication', type: :feature do
 
   scenario 'a user can log in with valid details' do
     sign_up
-    visit '/sessions/new'
     fill_in 'email', with: 'user@example.com'
     fill_in 'password', with: 'password'
     click_button 'submit'
@@ -29,7 +28,6 @@ describe 'authentication', type: :feature do
 
   scenario 'a user cant login with invalid password' do
     sign_up
-    visit '/sessions/new'
     fill_in 'email', with: 'user@example.com'
     fill_in 'password', with: 'passward'
     click_button 'submit'

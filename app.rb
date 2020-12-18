@@ -33,6 +33,7 @@ class Chitter < Sinatra::Base
     user = User.find_by_email(params[:email])
     if user.password == params[:password]
       session[:user] = params['email']
+      flash[:notice] = 'You have succesfully logged in!'
       redirect '/peeps/new'
     else
       flash[:notice] = 'Invalid password please try again'
@@ -41,6 +42,14 @@ class Chitter < Sinatra::Base
   end
 
   get '/peeps/new' do
-    'You have succesfully logged in!'
+    erb :new_peep
+  end
+
+  post '/peeps' do
+    redirect '/peeps'
+  end
+
+  get '/peeps' do
+    erb :peeps
   end
 end
