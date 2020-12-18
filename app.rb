@@ -16,9 +16,11 @@ class Chitter < Sinatra::Base
       flash[:notice] = 'User already exists please try a different username and email'
       redirect '/users/new'
     else
-      user = User.new(email: params['email'], name: params['name'], username: params['username'])
-      user.password = params['password']
-      user.save!
+      User.create_with_bcrypt(
+        email: params['email'], name: params['name'],
+        username: params['username'], password: params['password']
+      )
+      flash[:notice] = 'You have successfully signed up!'
       redirect '/sessions/new'
     end
   end

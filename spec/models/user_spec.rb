@@ -30,4 +30,16 @@ describe User do
       expect(User.exists?(username: 'artauro', email: 'user@example.com')).to eq(false)
     end
   end
+
+  context 'when creating a user' do
+    it 'persist the user with a bcrypt password' do
+      user = User.create_with_bcrypt(
+        email: 'user@example.com',
+        name: 'Amit Tauro',
+        username: 'artauro',
+        password: 'password'
+      )
+      expect(user.id).not_to eq(nil)
+    end
+  end
 end

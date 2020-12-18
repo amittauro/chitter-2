@@ -5,7 +5,7 @@
     <title></title>
   </head>
   <body>
-    You have successfully signed up!
+    <%= flash[:notice] %>
     <form class="" action="/sessions" method="post">
       <input type="text" name="email" value="">
       <input type="text" name="password" value="">

@@ -19,4 +19,15 @@ class User < ActiveRecord::Base
       false
     end
   end
+
+  def self.create_with_bcrypt(email:, password:, name:, username:)
+    user = self.new(
+      email: email,
+      name: name,
+      username: username
+    )
+    user.password = password
+    user.save!
+    user
+  end
 end
