@@ -12,7 +12,7 @@ class Chitter < Sinatra::Base
   end
 
   post '/users' do
-    if User.find_by(username: params['username']) || User.find_by(email: params['email'])
+    if User.exists?(username: params['username'], email: params['email'])
       flash[:notice] = 'User already exists please try a different username and email'
       redirect '/users/new'
     else

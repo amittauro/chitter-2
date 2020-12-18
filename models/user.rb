@@ -11,4 +11,12 @@ class User < ActiveRecord::Base
     @password = Password.create(new_password)
     self.password_hash = @password
   end
+
+  def self.exists?(username:, email:)
+    if self.find_by(username: username) || self.find_by(email: email)
+      true
+    else
+      false
+    end
+  end
 end

@@ -13,4 +13,21 @@ describe User do
       expect(user.id).not_to eq(nil)
     end
   end
+
+  context 'when checking that user exixts' do
+    it 'returns true if email or username exists' do
+      user = User.new(
+        email: 'user@example.com',
+        name: 'Amit Tauro',
+        username: 'artauro'
+      )
+      user.password = 'password'
+      user.save!
+      expect(User.exists?(username: 'artauro', email: 'user@example.com')).to eq(true)
+    end
+
+    it 'returns false if neither email or password exists' do
+      expect(User.exists?(username: 'artauro', email: 'user@example.com')).to eq(false)
+    end
+  end
 end
