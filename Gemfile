@@ -19,3 +19,9 @@ gem "rake", "~> 13.0"
 gem "pg", "~> 1.2"
 
 gem "database_cleaner-active_record", "~> 1.8"
+
+gem "rubocop", "~> 1.6", require: false
+
+gem 'simplecov', require: false, group: :test
+
+gem "simplecov-console", "~> 0.8.0"
