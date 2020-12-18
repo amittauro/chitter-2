@@ -18,3 +18,9 @@ def sign_up_and_log_in
   fill_in 'password', with: 'password'
   click_button 'submit'
 end
+
+def post_peep(message)
+  visit '/peeps/new'
+  fill_in 'peep', with: message
+  click_button 'submit'
+end
