@@ -28,4 +28,6 @@ RSpec.configure do |config|
     end
   end
 
+  config.filter_run_when_matching focus: true
+
 end

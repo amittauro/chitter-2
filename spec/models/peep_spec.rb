@@ -43,5 +43,5 @@ describe Peep do
       peep4 = Peep.create(user_id: user.id, message: 'hello', time: DateTime.new(2008,2,3,4,5,6))
       expect(Peep.reverse_order).to eq([peep3, peep4, peep1, peep2])
     end
-  end
+  end  
 end

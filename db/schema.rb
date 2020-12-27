@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_12_18_150923) do
     t.bigint "user_id"
     t.string "message"
     t.datetime "time"
+    t.integer "tags", array: true
     t.index ["user_id"], name: "index_peeps_on_user_id"
   end
 

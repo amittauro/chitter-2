@@ -27,3 +27,5 @@ gem 'simplecov', require: false, group: :test
 gem "simplecov-console", "~> 0.8.0"
 
 gem "sinatra-flash", "~> 0.3.0"
+
+gem "pry", "~> 0.13.1"

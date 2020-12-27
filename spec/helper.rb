@@ -19,6 +19,18 @@ def sign_up_and_log_in
   click_button 'submit'
 end
 
+def sign_up_and_log_in_2
+  visit '/users/new'
+  fill_in 'email', with: 'user2@example.com'
+  fill_in 'password', with: 'password2'
+  fill_in 'name', with: 'Amit Tauro'
+  fill_in 'username', with: 'artauro2'
+  click_button 'submit'
+  fill_in 'email', with: 'user2@example.com'
+  fill_in 'password', with: 'password2'
+  click_button 'submit'
+end
+
 def post_peep(message)
   visit '/peeps/new'
   fill_in 'peep', with: message
