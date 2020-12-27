@@ -43,5 +43,31 @@ describe Peep do
       peep4 = Peep.create(user_id: user.id, message: 'hello', time: DateTime.new(2008,2,3,4,5,6))
       expect(Peep.reverse_order).to eq([peep3, peep4, peep1, peep2])
     end
-  end  
+  end
+
+  context 'when updating peeps tags' do
+    it 'updates the peeps tag with the user id' do
+      user = User.create_with_bcrypt(
+        email: 'user@example.com',
+        name: 'Amit Tauro',
+        username: 'artauro',
+        password: 'password'
+      )
+      peep1 = Peep.create(user_id: user.id, message: 'hello', time: DateTime.new(2005,2,3,4,5,6))
+      peep1.update_tags(3)
+      expect(peep1.tags).to eq([3])
+    end
+
+    it 'updates the peeps tag with the user id' do
+      user = User.create_with_bcrypt(
+        email: 'user@example.com',
+        name: 'Amit Tauro',
+        username: 'artauro',
+        password: 'password'
+      )
+      peep1 = Peep.create(user_id: user.id, message: 'hello', time: DateTime.new(2005,2,3,4,5,6), tags: [2, 5])
+      peep1.update_tags(3)
+      expect(peep1.tags).to eq([2, 5, 3])
+    end
+  end
 end

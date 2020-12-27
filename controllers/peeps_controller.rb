@@ -14,12 +14,11 @@ class Chitter < Sinatra::Base
     erb :peeps
   end
 
-  post '/peeps/:id' do
+  patch '/peeps/:id' do
     peep = Peep.find(params['id'])
-    binding.pry
-
-
-    p params
+    peep.update_tags(session[:user])
+    flash[:notice] = "You tagged message: #{peep.message}"
+    redirect '/peeps'
   end
 
 end
